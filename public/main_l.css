@@ -1,0 +1,40 @@
+@media screen and (min-width: 960px) {
+  .logo-main {
+    height: 28px;
+  }
+  .menu-btn {
+    display: none;
+  }
+  #base > .body {
+    margin-left: auto;
+  }
+  #base > .body.with-menu {
+    width: calc(100vw - 336px);
+  }
+  .column {
+    padding: 18px;
+    width: calc(100% - 120px);
+    max-width: 800px;
+  }
+  .menu {
+    left: 0;
+    top: 50px;
+    width: 300px;
+    height: calc(100vh - 86px);
+  }
+  .menu > .header {
+    display: none;
+  }
+  .setting-group .item-box {
+    padding: 12px 0;
+  }
+  .dialog-box {
+    top: 0;
+    height: 100vh;
+  }
+  .dialog {
+    width: 560px;
+    padding: 32px 40px;
+    border-radius: 12px;
+  }
+}

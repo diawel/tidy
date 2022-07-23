@@ -1,0 +1,424 @@
+body {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  overflow-x: hidden;
+  background: #f9f9f9;
+}
+* {
+  font-family: 'Noto Sans JP', sans-serif;
+  color: #121212;
+}
+::selection {
+  background: #121212;
+  color: #ffffff;
+}
+::placeholder {
+  color: #a3a3a3;
+  font-weight: 500;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+a.link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+a.link:hover {
+  text-decoration: none;
+}
+a.button:hover {
+  opacity: 0.6;
+}
+
+#base > .header {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 18px;
+  background: #ffffff;
+}
+
+#base > .body {
+  height: calc(100vh - 50px);
+}
+.column {
+  margin: auto;
+}
+.column .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.column h2 {
+  display: inline-block;
+  font-size: 32px;
+  margin: 12px 0 0;
+}
+.column h3 {
+  font-size: 18px;
+  margin: 18px 0 8px;
+}
+.column h3.done {
+  color: #a3a3a3;
+  font-weight: 500;
+}
+.column .title .detail {
+  height: 24px;
+  margin-bottom: -6px;
+}
+.column .add {
+  display: block;
+  margin-top: 12px;
+  border-radius: 8px;
+  color: #a3a3a3;
+}
+.column .add::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: -1px 4px 1px -4px;
+  background-image: url("img/add.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+}
+.task-box {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+.task-box.done .title {
+  color: #a3a3a3;
+}
+.task-box > .check {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 12px;
+  position: relative;
+}
+.task-box:not(.done) > .check::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: -1px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid;
+  border-radius: 100%;
+}
+.task-box.done > .check::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 10px;
+  height: 5px;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+  transform: rotate(-45deg);
+}
+.task-box > .check[color = "0"]::after {
+  border-color: #ff8a8a;
+}
+.task-box > .check[color = "1"]::after {
+  border-color: #ffd88a;
+}
+.task-box > .check[color = "2"]::after {
+  border-color: #d8ff8a;
+}
+.task-box > .check[color = "3"]::after {
+  border-color: #8aff8a;
+}
+.task-box > .check[color = "4"]::after {
+  border-color: #8affd8;
+}
+.task-box > .check[color = "5"]::after {
+  border-color: #8ad8ff;
+}
+.task-box > .check[color = "6"]::after {
+  border-color: #8a8aff;
+}
+.task-box > .check[color = "7"]::after {
+  border-color: #d88aff;
+}
+.task-box > .check[color = "8"]::after {
+  border-color: #ff8ad8;
+}
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.task > .schedule {
+  color: #a3a3a3;
+  font-size: 14px;
+}
+.menu {
+  position: fixed;
+  padding: 18px;
+  background: #ffffff;
+}
+.menu .all {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+}
+.menu .all::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  background-image: url("img/list.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+}
+.menu h2 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #a3a3a3;
+  margin: 24px 0 18px;
+}
+.menu .board {
+  display: block;
+  margin-bottom: 12px;
+  border-radius: 8px;
+}
+.menu .board::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 2px 10px;
+  border-radius: 100%;
+}
+.menu .board[color = "0"]::before, .dialog .color[color = "0"]::after, .dialog .colors > a[color = "0"]::after {
+  background: #ff8a8a;
+}
+.menu .board[color = "1"]::before, .dialog .color[color = "1"]::after, .dialog .colors > a[color = "1"]::after {
+  background: #ffd88a;
+}
+.menu .board[color = "2"]::before, .dialog .color[color = "2"]::after, .dialog .colors > a[color = "2"]::after {
+  background: #d8ff8a;
+}
+.menu .board[color = "3"]::before, .dialog .color[color = "3"]::after, .dialog .colors > a[color = "3"]::after {
+  background: #8aff8a;
+}
+.menu .board[color = "4"]::before, .dialog .color[color = "4"]::after, .dialog .colors > a[color = "4"]::after {
+  background: #8affd8;
+}
+.menu .board[color = "5"]::before, .dialog .color[color = "5"]::after, .dialog .colors > a[color = "5"]::after {
+  background: #8ad8ff;
+}
+.menu .board[color = "6"]::before, .dialog .color[color = "6"]::after, .dialog .colors > a[color = "6"]::after {
+  background: #8a8aff;
+}
+.menu .board[color = "7"]::before, .dialog .color[color = "7"]::after, .dialog .colors > a[color = "7"]::after {
+  background: #d88aff;
+}
+.menu .board[color = "8"]::before, .dialog .color[color = "8"]::after, .dialog .colors > a[color = "8"]::after {
+  background: #ff8ad8;
+}
+.menu .add {
+  display: block;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  color: #a3a3a3;
+}
+.menu .add::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: -1px 4px 1px;
+  background-image: url("img/add.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+}
+.menu .footer{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 36px);
+  padding: 10px 18px;
+}
+.menu .setting-btn {
+  width: 16px;
+}
+
+.setting-group {
+  background: #ffffff;
+  border-radius: 18px;
+  margin: 12px 0 24px;
+  padding: 10px 20px;
+}
+.setting-group .item-box {
+  display: flex;
+  align-items: center;
+}
+.setting-group .item-box::after {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin: 2px 8px -2px;
+  background-image: url("/img/go.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: middle;
+}
+.setting-group .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.setting-group .state {
+  font-size: 14px;
+  color: #a3a3a3;
+}
+.dialog-box {
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dialog {
+  background: #ffffff;
+}
+.dialog .title {
+  width: 100%;
+  margin: 0;
+  font-size: 1.5em;
+  font-weight: 700;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+.dialog .schedule {
+  display: block;
+}
+.dialog .editing {
+  width: 100%;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  background: none;
+}
+.dialog .schedule.unset {
+  color: #a3a3a3;
+}
+.dialog .repeat {
+  display: block;
+  margin-top: 4px;
+}
+.dialog .description {
+  margin-top: 8px;
+  width: 100%;
+  height: 72px;
+  appearance: none;
+  resize: none;
+  padding: 0;
+  border: 0;
+  outline: none;
+  font-size: 1em;
+  background: transparent;
+}
+.dialog .description::placeholder {
+  color: #a3a3a3;
+}
+.dialog .control {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+.dialog .control .delete {
+  color: #a3a3a3;
+  margin-right: 18px;
+}
+.dialog .control .save[state="enabled"] {
+  font-weight: 700;
+}
+.dialog .control .save[state="disabled"] {
+  color: #a3a3a3;
+}
+.dialog .color {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.dialog > .color::after {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+}
+.dialog .colors {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0 16px;
+}
+.dialog .colors > a {
+  display: flex;
+  width: 20px;
+  height: 16px;
+  justify-content: center;
+  align-items: center;
+}
+.dialog .colors > a::after {
+  content: "";
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+}
+.dialog .colors > a.selected::after {
+  border: #f9f9f9 2px solid;
+  outline: #121212 2px solid; 
+}
+
+.dialog .switch {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.dialog .switch img {
+  height: 18px;
+}
+
+.large-button {
+  display: flex;
+  border-radius: 50px;
+  padding: 8px;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  background: #121212;
+  color: #f9f9f9;
+}
