@@ -44,6 +44,7 @@ function App() {
 function Private() {
   const {error, updateError} = useContext(ErrorContext);
   const [boards, updateBoards] = useState();
+  const [savedBoards, updateSavedBoards] = useState();
   const navigate = useNavigate();
   let navigateTo;
   useEffect(() => {
@@ -133,9 +134,7 @@ function Private() {
             }
           } else {
             boardsToken = response.boards_token;
-            if (!(Object.keys(boards).length == 0 && Object.keys(response.boards).length == 0) && JSON.stringify(boards) != JSON.stringify(response.boards)) {
-              uploadBoards();
-            }
+            updateSavedBoards(response.boards);
           }
         })
         .catch((error) => {
@@ -145,6 +144,14 @@ function Private() {
     }
   };
   useEffect(uploadBoards, [boards]);
+
+  useEffect(() => {
+    if (boards && savedBoards) {
+      if (!(Object.keys(boards).length == 0 && Object.keys(savedBoards).length == 0) && JSON.stringify(boards) != JSON.stringify(savedBoards)) {
+        uploadBoards();
+      }
+    }
+  }, [savedBoards]);
 
   if (boards) {
     return (
