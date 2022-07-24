@@ -1,9 +1,15 @@
 @media screen and (max-width: 959px) {
-  .logo-main {
+  .header.with-menu .logo-main {
     display: none;
   }
-  .menu-btn {
+  .header:not(.with-menu) .logo-main {
     height: 24px;
+  }
+  .header.with-menu .menu-btn {
+    height: 24px;
+  }
+  .header:not(.with-menu) .menu-btn {
+    display: none;
   }
   .column {
     padding: 8px 24px;
@@ -33,16 +39,17 @@
     height: 24px;
     height: 24px;
   }
-  .setting-group .item-box {
-    padding: 8px 0;
-  }
-  .dialog-box {
+  .dialog-box:not(.error) {
     top: 50px;
     height: calc(100vh - 50px);
+  }
+  .dialog-box.error {
+    top: 0;
+    height: 100vh;
   }
   .dialog {
     padding: 18px;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 36px);
   }
 }

@@ -39,7 +39,6 @@ a.button:hover {
   padding: 0 18px;
   background: #ffffff;
 }
-
 #base > .body {
   height: calc(100vh - 50px);
 }
@@ -158,6 +157,7 @@ a.button:hover {
   color: #a3a3a3;
   font-size: 14px;
 }
+
 .menu {
   position: fixed;
   padding: 18px;
@@ -266,6 +266,7 @@ a.button:hover {
 .setting-group .item-box {
   display: flex;
   align-items: center;
+  padding: 12px 0;
 }
 .setting-group .item-box::after {
   content: "";
@@ -289,10 +290,11 @@ a.button:hover {
   font-size: 14px;
   color: #a3a3a3;
 }
+
 .dialog-box {
   position: fixed;
   left: 0;
-  width: 100vw;
+  width: 100%;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -397,10 +399,9 @@ a.button:hover {
   border-radius: 100%;
 }
 .dialog .colors > a.selected::after {
-  border: #f9f9f9 2px solid;
+  border: #ffffff 2px solid;
   outline: #121212 2px solid; 
 }
-
 .dialog .switch {
   margin-top: 8px;
   display: flex;
@@ -420,5 +421,16 @@ a.button:hover {
   justify-content: center;
   align-items: center;
   background: #121212;
-  color: #f9f9f9;
+  color: #ffffff;
+}
+
+.splash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  height: 100vh;
+}
+.splash > img {
+  width: 120px;
 }

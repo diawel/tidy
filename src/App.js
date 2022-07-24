@@ -43,7 +43,7 @@ function App() {
 }
 function Private() {
   const {error, updateError} = useContext(ErrorContext);
-  const [boards, updateBoards] = useState({});
+  const [boards, updateBoards] = useState();
   const navigate = useNavigate();
   let navigateTo;
   useEffect(() => {
@@ -62,19 +62,16 @@ function Private() {
       const formData = new FormData();
       formData.set("id", localStorage.getItem("id"));
       formData.set("user_token", localStorage.getItem("user_token"));
-      fetch("/account/connect.php",
-        {
+      fetch("/account/connect.php", {
             method: "POST",
             cache: "no-cache",
             body: formData
         })
         .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            updateError("サーバーへの接続に失敗しました");
+          if (!response.ok) {
             throw new Error(response.status + response.statusText);
           }
+          return response.json();
         })
         .then((response) => {
           if (response.error) {
@@ -94,7 +91,8 @@ function Private() {
           }
         })
         .catch((error) => {
-            console.log(error);
+          updateError("サーバーへの接続に失敗しました");
+          console.log(error);
         });
     }
   }, []);
@@ -106,19 +104,16 @@ function Private() {
       formData.set("boards_token", boardsToken);
       formData.set("boards", JSON.stringify(boards));
       boardsToken = null;
-      fetch("/account/update.php",
-        {
-            method: "POST",
-            cache: "no-cache",
-            body: formData
+      fetch("/account/update.php", {
+          method: "POST",
+          cache: "no-cache",
+          body: formData
         })
         .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            updateError("サーバーへの接続に失敗しました");
+          if (!response.ok) {
             throw new Error(response.status + response.statusText);
           }
+          return response.json();
         })
         .then((response) => {
           if (response.error) {
@@ -144,23 +139,28 @@ function Private() {
           }
         })
         .catch((error) => {
-            console.log(error);
+          updateError("サーバーへの接続に失敗しました");
+          console.log(error);
         });
     }
   };
   useEffect(uploadBoards, [boards]);
 
-  return (
-    <BoardsContext.Provider value={{boards, updateBoards}}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/board/:boardId" element={<Board />} />
-        <Route path="/setting" element={<Setting />} />
-        <Route path="/account" element={<Account />} />
-        <Route path="/delete" element={<DeleteAccount />} />
-      </Routes>  
-    </BoardsContext.Provider>
-  );
+  if (boards) {
+    return (
+      <BoardsContext.Provider value={{boards, updateBoards}}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/board/:boardId" element={<Board />} />
+          <Route path="/setting" element={<Setting />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/delete" element={<DeleteAccount />} />
+        </Routes>  
+      </BoardsContext.Provider>
+    );
+  } else {
+    return <Splash />;
+  }
 }
 
 function Home() {
@@ -205,7 +205,7 @@ function Login() {
   document.title = "ログイン - Tidy";
   return (
     <div id="base">
-      <Header />
+      <Header public />
       <div className="body">
         <div className="column">
           <Title content="Twitter でログイン" />
@@ -239,19 +239,16 @@ function Account() {
       const formData = new FormData();
       formData.set("id", localStorage.getItem("id"));
       formData.set("user_token", localStorage.getItem("user_token"));
-      fetch("/account/logoutall.php",
-        {
+      fetch("/account/logoutall.php", {
             method: "POST",
             cache: "no-cache",
             body: formData
         })
         .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            updateError("サーバーへの接続に失敗しました");
+          if (!response.ok) {
             throw new Error(response.status + response.statusText);
           }
+          return response.json();
         })
         .then((response) => {
           if (response.error) {
@@ -271,7 +268,8 @@ function Account() {
           }
         })
         .catch((error) => {
-            console.log(error);
+          updateError("サーバーへの接続に失敗しました");
+          console.log(error);
         });
     }
   };
@@ -318,19 +316,16 @@ function DeleteAccount() {
       const formData = new FormData();
       formData.set("id", localStorage.getItem("id"));
       formData.set("user_token", localStorage.getItem("user_token"));
-      fetch("/account/delete.php",
-        {
+      fetch("/account/delete.php", {
             method: "POST",
             cache: "no-cache",
             body: formData
         })
         .then((response) => {
-          if (response.ok) {
-            return response.json();
-          } else {
-            updateError("サーバーへの接続に失敗しました");
+          if (!response.ok) {
             throw new Error(response.status + response.statusText);
           }
+          return response.json();
         })
         .then((response) => {
           if (response.error) {
@@ -350,7 +345,8 @@ function DeleteAccount() {
           }
         })
         .catch((error) => {
-            console.log(error);
+          updateError("サーバーへの接続に失敗しました");
+          console.log(error);
         });
     }
   };
@@ -377,7 +373,7 @@ function Terms() {
   document.title = "利用規約 - Tidy";
   return (
     <div id="base">
-      <Header />
+      <Header public />
       <div className="body">
         <div className="column">
           <Title content="利用規約" />
@@ -437,7 +433,7 @@ function Privacy() {
   document.title = "プライバシーポリシー - Tidy";
   return (
     <div id="base">
-      <Header />
+      <Header public />
       <div className="body">
         <div className="column">
           <Title content="プライバシーポリシー" />
@@ -468,9 +464,9 @@ function Privacy() {
   );
 }
 
-function Header() {
+function Header(props) {
   return (
-    <div className="header">
+    <div className={props.public ? "header": "header with-menu"}>
       <a href="/">
         <img className="logo-main" src="/img/logo.svg" />
       </a>
@@ -551,8 +547,8 @@ function Error() {
   const {error, updateError} = useContext(ErrorContext);
   if (error) {
     return (
-      <div className="dialog-box">
-        <div className="dialog">
+      <div className="dialog-box error">
+        <div className="dialog error">
           {error}
           <div className="control">
             <a href="">
@@ -563,6 +559,13 @@ function Error() {
       </div>
     );
   }
+}
+function Splash() {
+  return (
+    <div className="splash">
+      <img src="/logo512.png" />
+    </div>
+  );
 }
 
 function Entry(props) {
@@ -1040,7 +1043,6 @@ function TaskList(props) {
       isDone: false
     });
     updateBoards(updatedBoards);
-    console.log(updatedBoards);
   };
   return (
     <div className="body with-menu">
