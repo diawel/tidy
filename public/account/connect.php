@@ -12,7 +12,7 @@ if (isset($_POST['id']) && isset($_POST['user_token'])) {
       }
     }
     if ($match) {
-      $boards_token = substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 16)), 0, 16);
+      $boards_token = bin2hex(random_bytes(16));
       $user_data['boards_token'] = $boards_token;
       file_put_contents("users/{$_POST['id']}/user.json", json_encode($user_data));
       $response['boards_token'] = $boards_token;

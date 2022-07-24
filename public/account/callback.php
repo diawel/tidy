@@ -15,7 +15,7 @@ $user_info = $user_connection->get('account/verify_credentials');
 $id = $user_info->id;
 $screen_name = $user_info->screen_name;
 
-$user_token = substr(str_shuffle(str_repeat('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 16)), 0, 16);
+$user_token = bin2hex(random_bytes(16));
 if (file_exists("users/$id")) {
   $user_data = json_decode(file_get_contents("users/$id/user.json"), true);
   array_push($user_data['user_tokens'], $user_token);
