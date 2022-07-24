@@ -41,11 +41,15 @@ a.button:hover {
   height: 50px;
   padding: 0 18px;
   background: #ffffff;
-  z-index: 100;
 }
 #base > .body {
   margin-top: 50px;
   height: calc(100vh - 50px);
+  overflow: hidden;
+}
+#base > .body > .body-inner {
+  height: 100%;
+  overflow: auto;
 }
 .column {
   margin: auto;
@@ -167,7 +171,6 @@ a.button:hover {
   position: fixed;
   padding: 18px;
   background: #ffffff;
-  z-index: 200;
 }
 .menu .all {
   display: block;
@@ -305,7 +308,6 @@ a.button:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 300;
 }
 .dialog {
   background: #ffffff;
