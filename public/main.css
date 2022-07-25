@@ -37,19 +37,13 @@ a.button:hover {
   position: fixed;
   top: 0;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 36px);
   height: 50px;
   padding: 0 18px;
   background: #ffffff;
 }
 #base > .body {
   margin-top: 50px;
-  height: calc(100vh - 50px);
-  overflow: hidden;
-}
-#base > .body > .body-inner {
-  height: 100%;
-  overflow: auto;
 }
 .column {
   margin: auto;
@@ -165,12 +159,18 @@ a.button:hover {
 .task > .schedule {
   color: #a3a3a3;
   font-size: 14px;
+  min-width: 3em;
+  text-align: right;
+  margin-left: 8px;
 }
 
 .menu {
   position: fixed;
   padding: 18px;
   background: #ffffff;
+}
+.menu > .body {
+  overflow: auto;
 }
 .menu .all {
   display: block;
@@ -253,7 +253,7 @@ a.button:hover {
   background-size: contain;
   vertical-align: middle;
 }
-.menu .footer{
+.menu > .footer{
   position: absolute;
   bottom: 0;
   left: 0;
@@ -435,10 +435,13 @@ a.button:hover {
 
 .splash {
   display: flex;
+  position: fixed;
+  top: 0;
   justify-content: center;
   align-items: center;
   background: #ffffff;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
 }
 .splash > img {
   width: 120px;

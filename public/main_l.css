@@ -9,7 +9,7 @@
     margin-left: auto;
   }
   #base > .body.with-menu {
-    width: calc(100vw - 336px);
+    width: calc(100% - 336px);
   }
   .column {
     padding: 18px 18px 36px;
@@ -19,14 +19,19 @@
   .menu {
     top: 50px;
     width: 300px;
-    height: calc(100vh - 86px);
+    height: calc(100% - 86px);
   }
   .menu > .header {
     display: none;
   }
+  .menu > .body {
+    height: calc(100% - 44px);
+    margin: -18px -18px 0;
+    padding: 18px;
+  }
   .dialog-box {
     top: 0;
-    height: 100vh;
+    height: 100%;
   }
   .dialog {
     width: 560px;

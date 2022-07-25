@@ -174,8 +174,8 @@ function Home() {
   document.title = "すべてのタスク - Tidy";
   return (
     <div id="base">
-      <Header />
       <Dashboard />
+      <Header />
       <Menu />
       <Popup />
     </div>
@@ -185,27 +185,25 @@ function Setting() {
   document.title = "設定 - Tidy";
   return (
     <div id="base">
-      <Header />
       <div className="body with-menu">
-        <div className="body-inner">
-          <div className="column">
-            <Title content="設定" />
-            <div className="setting-group">
-              <Link to="/account" className="button">
-                <Entry title="アカウント" state={"@" + localStorage.getItem("screen_name")} />
-              </Link>
-            </div>
-            <div className="setting-group">
-              <Link to="/terms" className="button">
-                <Entry title="利用規約" />
-              </Link>
-              <Link to="/privacy" className="button">
-                <Entry title="プライバシーポリシー" />
-              </Link>
-            </div>
+        <div className="column">
+          <Title content="設定" />
+          <div className="setting-group">
+            <Link to="/account" className="button">
+              <Entry title="アカウント" state={"@" + localStorage.getItem("screen_name")} />
+            </Link>
+          </div>
+          <div className="setting-group">
+            <Link to="/terms" className="button">
+              <Entry title="利用規約" />
+            </Link>
+            <Link to="/privacy" className="button">
+              <Entry title="プライバシーポリシー" />
+            </Link>
           </div>
         </div>
       </div>
+      <Header />
       <Menu />
     </div>
   );
@@ -214,19 +212,17 @@ function Login() {
   document.title = "ログイン - Tidy";
   return (
     <div id="base">
-      <Header public />
       <div className="body">
-        <div className="body-inner">
-          <div className="column">
-            <Title content="Twitter でログイン" />
-            <p>Tidy ではデータの同期に Twitter アカウントを使用します。</p>
-            <p>データの取り扱いについてはこちら。<br />
-            <Link to="/terms" className="link">利用規約</Link><br />
-            <Link to="/privacy" className="link">プライバシーポリシー</Link></p>
-            <a href="/account/redirect.php" className="button large-button">Twitter でログイン</a>
-          </div>
+        <div className="column">
+          <Title content="Twitter でログイン" />
+          <p>Tidy ではデータの同期に Twitter アカウントを使用します。</p>
+          <p>データの取り扱いについてはこちら。<br />
+          <Link to="/terms" className="link">利用規約</Link><br />
+          <Link to="/privacy" className="link">プライバシーポリシー</Link></p>
+          <a href="/account/redirect.php" className="button large-button">Twitter でログイン</a>
         </div>
       </div>
+      <Header public />
     </div>
   );
 }
@@ -287,33 +283,31 @@ function Account() {
 
   return (
     <div id="base">
-      <Header />
       <div className="body with-menu">
-        <div className="body-inner">
-          <div className="column">
-            <Title content={"@" + localStorage.getItem("screen_name")} />
-            <div className="setting-group">
-              <Link to="/login" className="button">
-                <Entry title="他のアカウントでログイン" />
-              </Link>
-              <a onClick={exportBoards} href={exportedUrl} download="exported.json" className="button">
-                <Entry title="データをエクスポート" />
-              </a>
-            </div>
-            <div className="setting-group">
-              <Link onClick={logout} to="/login" className="button">
-                <Entry title="ログアウト" />
-              </Link>
-              <a onClick={logoutAll} href="" className="button">
-                <Entry title="すべての端末でログアウト" />
-              </a>
-              <Link to="/delete" className="button">
-                <Entry title="アカウントを削除" />
-              </Link>
-            </div>
+        <div className="column">
+          <Title content={"@" + localStorage.getItem("screen_name")} />
+          <div className="setting-group">
+            <Link to="/login" className="button">
+              <Entry title="他のアカウントでログイン" />
+            </Link>
+            <a onClick={exportBoards} href={exportedUrl} download="exported.json" className="button">
+              <Entry title="データをエクスポート" />
+            </a>
+          </div>
+          <div className="setting-group">
+            <Link onClick={logout} to="/login" className="button">
+              <Entry title="ログアウト" />
+            </Link>
+            <a onClick={logoutAll} href="" className="button">
+              <Entry title="すべての端末でログアウト" />
+            </a>
+            <Link to="/delete" className="button">
+              <Entry title="アカウントを削除" />
+            </Link>
           </div>
         </div>
       </div>
+      <Header />
       <Menu />
     </div>
   );
@@ -366,20 +360,18 @@ function DeleteAccount() {
 
   return (
     <div id="base">
-      <Header />
       <div className="body with-menu">
-        <div className="body-inner">
-          <div className="column">
-            <Title content="アカウントを削除" />
-            <p>この操作は取り消せません。続行しますか？</p>
-            <div className="setting-group">
-              <a onClick={deleteAccount} href="" className="button">
-                <Entry title="続行" />
-              </a>
-            </div>
+        <div className="column">
+          <Title content="アカウントを削除" />
+          <p>この操作は取り消せません。続行しますか？</p>
+          <div className="setting-group">
+            <a onClick={deleteAccount} href="" className="button">
+              <Entry title="続行" />
+            </a>
           </div>
         </div>
       </div>
+      <Header />
       <Menu />
     </div>
   );
@@ -388,61 +380,59 @@ function Terms() {
   document.title = "利用規約 - Tidy";
   return (
     <div id="base">
-      <Header public />
       <div className="body">
-        <div className="body-inner">
-          <div className="column">
-            <Title content="利用規約" />
-            <p>この利用規約（以下，「本規約」といいます。）は，Diawel（以下，「作者」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。
-            利用者の皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。</p>
-            <h3>第1条（適用）</h3>
-            <ol>
-              <li>本規約は，ユーザーと作者との間の本サービスの利用に関わる一切の関係に適用されるものとします。</li>
-              <li>作者は本サービスに関し，本規約のほか，ご利用にあたってのルール等，各種の定め（以下，「個別規定」といいます。）をすることがあります。
-                これら個別規定はその名称のいかんに関わらず，本規約の一部を構成するものとします。</li>
-              <li>本規約の規定が前条の個別規定の規定と矛盾する場合には，個別規定において特段の定めなき限り，個別規定の規定が優先されるものとします。</li>
-            </ol>
-            <h3>第2条（禁止事項）</h3>
-            ユーザーは，本サービスの利用にあたり，以下の行為をしてはなりません。
-            <ol>
-              <li>法令または公序良俗に違反する行為</li>
-              <li>犯罪行為に関連する行為</li>
-              <li>本サービスの内容等，本サービスに含まれる著作権，商標権ほか知的財産権を侵害する行為</li>
-              <li>作者，ほかのユーザー，またはその他第三者のサーバーまたはネットワークの機能を破壊したり，妨害したりする行為</li>
-              <li>作者のサービスの運営を妨害するおそれのある行為</li>
-              <li>不正アクセスをし，またはこれを試みる行為</li>
-              <li>不正な目的を持って本サービスを利用する行為</li>
-              <li>本サービスの他のユーザーまたはその他の第三者に不利益，損害，不快感を与える行為</li>
-              <li>作者のサービスに関連して，反社会的勢力に対して直接または間接に利益を供与する行為</li>
-              <li>その他，作者が不適切と判断する行為</li>
-            </ol>
-            <h3>第3条（本サービスの提供の停止等）</h3>
-            <ol>
-              <li>作者は，ユーザーに事前に通知することなく本サービスの全部または一部の提供を停止または中断することができるものとします。</li>
-              <li>作者は，本サービスの提供の停止または中断により，ユーザーまたは第三者が被ったいかなる不利益または損害についても，一切の責任を負わないものとします。</li>
-            </ol>
-            <h3>第4条（利用制限）</h3>
-            <ol>
-              <li>作者は，ユーザーが本規約のいずれかの条項に違反した場合など，本サービスの利用を適当でないと判断した場合には，
-                事前の通知なく，ユーザーに対して，本サービスの全部もしくは一部の利用を制限することができるものとします。</li>
-              <li>作者は，本条に基づき作者が行った行為によりユーザーに生じた損害について，一切の責任を負いません。</li>
-            </ol>
-            <h3>第5条（保証の否認および免責事項）</h3>
-            <ol>
-              <li>作者は，本サービスに事実上または法律上の瑕疵（安全性，信頼性，正確性，完全性，有効性，特定の目的への適合性，セキュリティなどに関する欠陥，エラーやバグ，権利侵害などを含みます。）がないことを明示的にも黙示的にも保証しておりません。</li>
-              <li>作者は，本サービスに起因してユーザーに生じたあらゆる損害について一切の責任を負いません。ただし，本サービスに関する作者とユーザーとの間の契約（本規約を含みます。）が消費者契約法に定める消費者契約となる場合，この免責規定は適用されません。</li>
-              <li>作者は，本サービスに関して，ユーザーと他のユーザーまたは第三者との間において生じた取引，連絡または紛争等について一切責任を負いません。</li>
-            </ol>
-            <h3>第6条（サービス内容の変更等）</h3>
-            作者は，ユーザーに通知することなく，本サービスの内容を変更しまたは本サービスの提供を中止することができるものとし，これによってユーザーに生じた損害について一切の責任を負いません。
-            <h3>第7条（利用規約の変更）</h3>
-            作者は，必要と判断した場合には，ユーザーに通知することなくいつでも本規約を変更することができるものとします。なお，本規約の変更後，本サービスの利用を開始した場合には，当該ユーザーは変更後の規約に同意したものとみなします
-            <h3>第8条（準拠法・裁判管轄）</h3>
-            本規約の解釈にあたっては，日本法を準拠法とします。
-            <p>以上</p>
-          </div>
-        </div>
+        <div className="column">
+          <Title content="利用規約" />
+          <p>この利用規約（以下，「本規約」といいます。）は，Diawel（以下，「作者」といいます。）がこのウェブサイト上で提供するサービス（以下，「本サービス」といいます。）の利用条件を定めるものです。
+          利用者の皆さま（以下，「ユーザー」といいます。）には，本規約に従って，本サービスをご利用いただきます。</p>
+          <h3>第1条（適用）</h3>
+          <ol>
+            <li>本規約は，ユーザーと作者との間の本サービスの利用に関わる一切の関係に適用されるものとします。</li>
+            <li>作者は本サービスに関し，本規約のほか，ご利用にあたってのルール等，各種の定め（以下，「個別規定」といいます。）をすることがあります。
+              これら個別規定はその名称のいかんに関わらず，本規約の一部を構成するものとします。</li>
+            <li>本規約の規定が前条の個別規定の規定と矛盾する場合には，個別規定において特段の定めなき限り，個別規定の規定が優先されるものとします。</li>
+          </ol>
+          <h3>第2条（禁止事項）</h3>
+          ユーザーは，本サービスの利用にあたり，以下の行為をしてはなりません。
+          <ol>
+            <li>法令または公序良俗に違反する行為</li>
+            <li>犯罪行為に関連する行為</li>
+            <li>本サービスの内容等，本サービスに含まれる著作権，商標権ほか知的財産権を侵害する行為</li>
+            <li>作者，ほかのユーザー，またはその他第三者のサーバーまたはネットワークの機能を破壊したり，妨害したりする行為</li>
+            <li>作者のサービスの運営を妨害するおそれのある行為</li>
+            <li>不正アクセスをし，またはこれを試みる行為</li>
+            <li>不正な目的を持って本サービスを利用する行為</li>
+            <li>本サービスの他のユーザーまたはその他の第三者に不利益，損害，不快感を与える行為</li>
+            <li>作者のサービスに関連して，反社会的勢力に対して直接または間接に利益を供与する行為</li>
+            <li>その他，作者が不適切と判断する行為</li>
+          </ol>
+          <h3>第3条（本サービスの提供の停止等）</h3>
+          <ol>
+            <li>作者は，ユーザーに事前に通知することなく本サービスの全部または一部の提供を停止または中断することができるものとします。</li>
+            <li>作者は，本サービスの提供の停止または中断により，ユーザーまたは第三者が被ったいかなる不利益または損害についても，一切の責任を負わないものとします。</li>
+          </ol>
+          <h3>第4条（利用制限）</h3>
+          <ol>
+            <li>作者は，ユーザーが本規約のいずれかの条項に違反した場合など，本サービスの利用を適当でないと判断した場合には，
+              事前の通知なく，ユーザーに対して，本サービスの全部もしくは一部の利用を制限することができるものとします。</li>
+            <li>作者は，本条に基づき作者が行った行為によりユーザーに生じた損害について，一切の責任を負いません。</li>
+          </ol>
+          <h3>第5条（保証の否認および免責事項）</h3>
+          <ol>
+            <li>作者は，本サービスに事実上または法律上の瑕疵（安全性，信頼性，正確性，完全性，有効性，特定の目的への適合性，セキュリティなどに関する欠陥，エラーやバグ，権利侵害などを含みます。）がないことを明示的にも黙示的にも保証しておりません。</li>
+            <li>作者は，本サービスに起因してユーザーに生じたあらゆる損害について一切の責任を負いません。ただし，本サービスに関する作者とユーザーとの間の契約（本規約を含みます。）が消費者契約法に定める消費者契約となる場合，この免責規定は適用されません。</li>
+            <li>作者は，本サービスに関して，ユーザーと他のユーザーまたは第三者との間において生じた取引，連絡または紛争等について一切責任を負いません。</li>
+          </ol>
+          <h3>第6条（サービス内容の変更等）</h3>
+          作者は，ユーザーに通知することなく，本サービスの内容を変更しまたは本サービスの提供を中止することができるものとし，これによってユーザーに生じた損害について一切の責任を負いません。
+          <h3>第7条（利用規約の変更）</h3>
+          作者は，必要と判断した場合には，ユーザーに通知することなくいつでも本規約を変更することができるものとします。なお，本規約の変更後，本サービスの利用を開始した場合には，当該ユーザーは変更後の規約に同意したものとみなします
+          <h3>第8条（準拠法・裁判管轄）</h3>
+          本規約の解釈にあたっては，日本法を準拠法とします。
+          <p>以上</p>
+        </div> 
       </div>
+      <Header public />
     </div>
   );
 }
@@ -450,35 +440,33 @@ function Privacy() {
   document.title = "プライバシーポリシー - Tidy";
   return (
     <div id="base">
-      <Header public />
       <div className="body">
-        <div className="body-inner">
-          <div className="column">
-            <Title content="プライバシーポリシー" />
-            <p>Diawel（以下，「作者」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）における，利用者の皆さま（以下，「ユーザー」といいます。）の個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。</p>
-            <h3>第1条（個人情報の収集）</h3>
-            <ol>
-              <li>作者は，ユーザーに関する，IPアドレスなどの個人を特定することにつながるデータを収集することがあります。</li>
-              <li>作者は，本サービスで収集したいかなるデータも，連動する外部のサービスに送信することがあります。</li>
-            </ol>
-            <h3>第2条（個人情報を収集・利用する目的）</h3>
-            <p>作者が個人情報を収集・利用する目的は，以下のとおりです。</p>
-            <ol>
-              <li>サービスの提供・運営のため</li>
-              <li>利用規約に違反したユーザーや，不正・不当な目的でサービスを利用しようとするユーザーの特定をし，ご利用をお断りするため</li>
-              <li>上記の利用目的に付随する目的</li>
-            </ol>
-            <h3>第3条（利用目的の変更）</h3>
-            <p>作者は，利用目的が変更前と関連性を有すると合理的に認められる場合に限り，個人情報の利用目的を変更するものとします。</p>
-            <h3>第4条（プライバシーポリシーの変更）</h3>
-            <ol>
-              <li>本ポリシーの内容は，法令その他本ポリシーに別段の定めのある事項を除いて，ユーザーに通知することなく，変更することができるものとします。</li>
-              <li>作者が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。</li>
-            </ol>
-            <p>以上</p>
-          </div>
+        <div className="column">
+          <Title content="プライバシーポリシー" />
+          <p>Diawel（以下，「作者」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）における，利用者の皆さま（以下，「ユーザー」といいます。）の個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。</p>
+          <h3>第1条（個人情報の収集）</h3>
+          <ol>
+            <li>作者は，ユーザーに関する，IPアドレスなどの個人を特定することにつながるデータを収集することがあります。</li>
+            <li>作者は，本サービスで収集したいかなるデータも，連動する外部のサービスに送信することがあります。</li>
+          </ol>
+          <h3>第2条（個人情報を収集・利用する目的）</h3>
+          <p>作者が個人情報を収集・利用する目的は，以下のとおりです。</p>
+          <ol>
+            <li>サービスの提供・運営のため</li>
+            <li>利用規約に違反したユーザーや，不正・不当な目的でサービスを利用しようとするユーザーの特定をし，ご利用をお断りするため</li>
+            <li>上記の利用目的に付随する目的</li>
+          </ol>
+          <h3>第3条（利用目的の変更）</h3>
+          <p>作者は，利用目的が変更前と関連性を有すると合理的に認められる場合に限り，個人情報の利用目的を変更するものとします。</p>
+          <h3>第4条（プライバシーポリシーの変更）</h3>
+          <ol>
+            <li>本ポリシーの内容は，法令その他本ポリシーに別段の定めのある事項を除いて，ユーザーに通知することなく，変更することができるものとします。</li>
+            <li>作者が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。</li>
+          </ol>
+          <p>以上</p>
         </div>
       </div>
+      <Header public />
     </div>
   );
 }
@@ -498,6 +486,14 @@ function Header(props) {
 function Menu() {
   const {boards, updateBoards} = useContext(BoardsContext);
   const hash = useLocation().hash.substring(1);
+  useEffect(() => {
+    if (hash == "menu") {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [hash]);
+
   const addBoard = (e) => {
     const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
     let uid = "u";
@@ -517,6 +513,7 @@ function Menu() {
     updateBoards(updatedBoards);
     e.target.href = "#" + uid;
   };
+
   let boardList = [];
   for (let board in boards) {
     boardList.push([board, boards[board]]);
@@ -526,6 +523,7 @@ function Menu() {
     if (first[1].profile.timestamp.replace(/[^0-9]/g, "") > second[1].profile.timestamp.replace(/[^0-9]/g, "")) return -1;
     return 0;
   });
+
   return (
     <div className="menu" state={hash == "menu" ? "show" : "hide"}>
       <div className="header">
@@ -1037,16 +1035,14 @@ function LaterTasks(props) {
 function Dashboard() {
   return (
     <div className="body with-menu">
-      <div className="body-inner">
-        <div className="column">
-          <Title content="すべてのタスク" />
-          <AsapTasks dashboard />
-          <PastTasks dashboard />
-          <DayTasks dashboard />
-          <WeekTasks dashboard />
-          <LaterTasks dashboard />
-          <DoneTasks dashboard />
-        </div>
+      <div className="column">
+        <Title content="すべてのタスク" />
+        <AsapTasks dashboard />
+        <PastTasks dashboard />
+        <DayTasks dashboard />
+        <WeekTasks dashboard />
+        <LaterTasks dashboard />
+        <DoneTasks dashboard />
       </div>
     </div>
   );
@@ -1067,19 +1063,17 @@ function TaskList(props) {
   };
   return (
     <div className="body with-menu">
-      <div className="body-inner">
-        <div className="column">
-          <Title content={boards[props.target].profile.title} setting={props.target} />
-          <AsapTasks target={props.target} />
-          <PastTasks target={props.target} />
-          <DayTasks target={props.target} />
-          <WeekTasks target={props.target} />
-          <LaterTasks target={props.target} />
-          <a className="add button" href="" onClick={addTask}>
-            タスクを追加
-          </a>
-          <DoneTasks target={props.target} />
-        </div>
+      <div className="column">
+        <Title content={boards[props.target].profile.title} setting={props.target} />
+        <AsapTasks target={props.target} />
+        <PastTasks target={props.target} />
+        <DayTasks target={props.target} />
+        <WeekTasks target={props.target} />
+        <LaterTasks target={props.target} />
+        <a className="add button" href="" onClick={addTask}>
+          タスクを追加
+        </a>
+        <DoneTasks target={props.target} />
       </div>
     </div>
   );
@@ -1173,8 +1167,8 @@ function Board() {
     document.title = boards[boardId].profile.title + " - Tidy";
     return (
       <div id="base">
-        <Header />
         <TaskList target={boardId} />
+        <Header />
         <Menu />
         <Popup />
       </div>

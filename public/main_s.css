@@ -18,19 +18,26 @@
   }
   .menu {
     top: 0;
-    width: calc(100vw - 36px);
-    height: calc(100vh - 36px);
+    width: calc(100% - 36px);
+    height: calc(100% - 36px);
   }
   .menu[state="show"] {
     left: 0;
   }
   .menu[state="hide"] {
-    left: -100vw;
+    left: -100%;
   }
   .menu > .header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 18px;
+    height: 24px;
+  }
+  .menu > .body {
+    height: calc(100% - 68px);
+    overflow: auto;
+    margin: 0 -18px;
+    padding: 0 18px;
   }
   .logo-menu {
     height: 24px;
@@ -41,11 +48,11 @@
   }
   .dialog-box:not(.error) {
     top: 50px;
-    height: calc(100vh - 50px);
+    height: calc(100% - 50px);
   }
   .dialog-box.error {
     top: 0;
-    height: 100vh;
+    height: 100%;
   }
   .dialog {
     padding: 18px;
