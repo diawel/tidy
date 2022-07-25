@@ -18,6 +18,16 @@ function App() {
       navigate(navigateTo);
     }
   }, [navigateTo]);
+  const hash = useLocation().hash.substring(1);
+  useEffect(() => {
+    if (hash) {
+      document.body.style.overflow = "hidden";
+      document.body.style.height = "100%";
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+    }
+  }, [hash]);
 
   const params = new URLSearchParams(window.location.search);
   switch (params.get("action")) {
@@ -486,13 +496,6 @@ function Header(props) {
 function Menu() {
   const {boards, updateBoards} = useContext(BoardsContext);
   const hash = useLocation().hash.substring(1);
-  useEffect(() => {
-    if (hash == "menu") {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [hash]);
 
   const addBoard = (e) => {
     const chars = "abcdefghijklmnopqrstuvwxyz0123456789";

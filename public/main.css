@@ -1,3 +1,7 @@
+html {
+  overflow: auto;
+  height: 100%;
+}
 body {
   margin: 0;
   font-size: 16px;
